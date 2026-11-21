@@ -68,15 +68,21 @@ The effective resource fraction modulates the synaptic contribution to the neuro
 
 ### 4. Spike-timing-dependent plasticity (STDP)
 
-The three pathways targeting L4 undergo pairwise, multiplicative weight changes. Recent pre/post spike events within a **100-ms window** are paired according to temporal order:
+The three pathways targeting L4 undergo pairwise, multiplicative weight changes. Recent presynaptic and postsynaptic spike events within a **100-ms window** are paired according to their temporal order.
+
+When the presynaptic spike occurs **before or at the same time as** the postsynaptic spike, the weight is potentiated:
 
 ```math
-\Delta w =
-\begin{cases}
-+w A_+\exp[-(t_{post}-t_{pre})/\tau_+], & t_{post}\ge t_{pre},\\
--w A_-\exp[-(t_{pre}-t_{post})/\tau_-], & t_{post}<t_{pre}.
-\end{cases}
+\Delta w_{\mathrm{pot}} = w A_+ \exp\left(-\frac{t_{\mathrm{post}}-t_{\mathrm{pre}}}{\tau_+}\right)
 ```
+
+When the postsynaptic spike occurs **before** the presynaptic spike, the weight is depressed:
+
+```math
+\Delta w_{\mathrm{dep}} = -w A_- \exp\left(-\frac{t_{\mathrm{pre}}-t_{\mathrm{post}}}{\tau_-}\right)
+```
+
+Here, `w` is the current pathway weight; the applicable expression depends on the ordering of the pre- and postsynaptic spikes.
 
 The notebook uses `A₊ = 0.015`, `τ₊ = 13 ms`, `A₋ = 0.021`, and `τ₋ = 20 ms`. It stores recent eligible events rather than summing over all possible spike pairs. Every plastic weight is constrained to **[0, 1]** to avoid unbounded numerical growth. These bounds are a modelling choice, not a biological measurement.
 
