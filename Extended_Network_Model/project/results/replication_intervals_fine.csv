@@ -1,0 +1,10 @@
+condition,regime,metric,n,mean,lo,hi
+intact,early,response_dev_minus_std,32,1.37621528,1.24047988,1.51195068
+intact,early,efficacy_dev_minus_std,32,-0.0126779942,-0.0139006174,-0.011455371
+intact,early,input_dev_minus_std,32,-0.0107638889,-0.376993913,0.355466135
+intact,late,response_dev_minus_std,32,0.353342014,0.265766323,0.440917705
+intact,late-early,response_dev_minus_std,32,-1.02287326,-1.10718119,-0.938565333
+intact,late,efficacy_dev_minus_std,32,0.00333971982,0.00202717054,0.0046522691
+intact,late-early,efficacy_dev_minus_std,32,0.0160177141,0.0149138886,0.0171215395
+intact,late,input_dev_minus_std,32,-0.0107638889,-0.376993913,0.355466135
+intact,late-early,input_dev_minus_std,32,0,0,0
